@@ -1,0 +1,28 @@
+# Infrastructure Inventory Template
+# Adapt to your setup
+
+hosts:
+  primary:
+    hostname: your-primary-host
+    os: macOS / Linux
+    role: primary coordination hub
+    services:
+      - name: agent-gateway
+        type: openclaw-gateway
+        restart: "openclaw gateway restart"
+
+  worker:
+    hostname: your-worker-host
+    os: Ubuntu LTS
+    role: worker agent
+    services:
+      - name: worker-gateway
+        type: openclaw-gateway
+
+agents:
+  coordinator:
+    host: primary
+    role: coordinator
+  worker:
+    host: worker
+    role: code agent
